@@ -1,0 +1,70 @@
+This repository contains files related to the publication:
+
+Antonio Toral and Víctor M. Sánchez-Cartagena. A Multifaceted Evaluation of Neural versus Phrase-Based Machine Translation for 9 Language Directions. 15th EACL Conference. 2017.
+
+
+-------------------
+Contents (folders):
+-------------------
+
+code/		Code developed (Python):
+			- Stemmer
+			- Tokenizer
+			- Scores by length
+
+data*/		Urls to download the monolingual and parallel training data used
+
+third/		Third party code used
+			- chrF evaluation metric
+			- Czech stemmer
+			- hjerson
+			- Moses v3 scripts
+
+references/	References of WMT16 in their original format (sgm) and processed:
+			- tokenised (.tok)
+			- truecased (.true)
+			- stemmed (.base). Czech stemming has 2 variants (-aggresive, -light) 
+
+systems/	MT outputs of the best submissions at WMT6 in their original format (sgm)
+		and processed:
+			- tokenised (.tok)
+			- truecased (.true)
+			- stemmed (.base). Czech stemming has 2 variants (-aggresive, -light)
+
+overlaps/	Output of the output similarity experiment (Section 3)
+
+scores_*length/	Outputs of the experiment regarding sentence length (Section 6)
+
+hjerson/	Outputs of the error categories experiment (Section 7) in different formats:
+			- .cats
+			- .errs
+			- .html
+			- .out (used to report results in the paper, Tables 7 and 8)
+			- .sents
+
+
+
+
+
+-----------------
+Contents (files):
+-----------------
+
+preprocessing.sh	Data preprocessing:
+			- desgmise
+			- train monolingual data
+			- train parallel data
+			- reference translations and MT outputs
+
+experiments.sh		Experiments:
+			- Output similarity (Section 3). Function overlap_metric
+			- Fluency (Section 4). VSC TODO
+			- Reordering (Section 5). VSC TODO
+			- Sentence length (Section 6). Function scores_by_length
+			- Error categories (Section 7). Function hjerson
+
+systems_list.txt	List and description of the machine translation systems used
+			in the experiments
+
+russian_stem_fix.txt	Instructions to fix the output of the stemmer used for Russian
+

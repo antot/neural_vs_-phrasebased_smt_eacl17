@@ -1,0 +1,25 @@
+
+Wer:  	32017	67.88
+Rper: 	24256	51.42
+Hper: 	24839	52.02
+
+SUMerr: 	30807	64.59
+
+rINFer: 	3151	6.68
+hINFer: 	3151	6.60
+rRer:   	3292	6.98
+hRer:   	3292	6.89
+MISer:  	3040	6.44
+EXTer:  	3581	7.50
+rLEXer: 	17719	37.56
+hLEXer: 	17743	37.16
+
+brINFer: 	2877	6.10
+bhINFer: 	2881	6.03
+brRer:   	2586	5.48
+bhRer:   	2601	5.45
+bMISer:  	2084	4.42
+bEXTer:  	2370	4.96
+brLEXer: 	9254	19.62
+bhLEXer: 	9064	18.98
+

@@ -1,0 +1,108 @@
+LIST AND DESCRIPTION OF MACHINE TRANSLATION SYSTEMS USED
+
+We have used the best* phrase-based** machine translation (PBMT) and neural machine translation (NMT) constrained systems submitted to the news task of WMT16 for each language pair. All language pairs are considered except Finnish->English and English<->Turskish (see the paper for further details).
+
+Below we show the systems used for each language pair. They are ranked as 1, 2, etc. with 1 being the best, 2 second best, etc.
+
+* According to the human evaluation (Bojar et al., 2016, Sec. 3.4). When there are not statistically significant differences between two or more NMT or PBMT systems (i.e. they
+belong to the same equivalence class), we pick the one with the highest BLEU score. If two NMT or PBMT systems were the best according to BLEU (draw), we pick the one with the
+best TER score.
+
+** Many of the PBMT systems contain neural features, mainly in the form of language models. If the best PBMT submission contains any neural features we use this as the
+PBMT system in our analyses as long as none of these features is a fully-fledged NMT system. This was the case of the best submission in terms of BLEU for RU→EN (Junczys-
+Dowmunt et al., 2016)
+
+
+
+-------------------
+ENCS
+NMT1 Edi http://matrix.statmt.org/systems/show/2702 NMT with bpe preprocessing and backtranslated news. Ensenble of 4, rescored with R-L model.
+NMT2 NY http://matrix.statmt.org/systems/show/2659 BPE to Character neural machine translation system http://arxiv.org/abs/1603.06147
+
+SMT1 JHU http://matrix.statmt.org/systems/show/2657 Phrase-based model, word clusters for all model components (LM, OSM, LR, sparse features), large cc LM -- no neural network joint model
+SMT2 Edi http://matrix.statmt.org/systems/show/2647 Run 9
+-------------------
+
+-------------------
+ENDE
+NMT1 Edi http://matrix.statmt.org/systems/show/2676 BPE neural MT system with monolingual training data (back-translated). ensemble of 4, reranked with right-to-left model.
+NMT2 Salesforce MetaMind http://matrix.statmt.org/systems/show/2775 Neural MT system based on Luong 2015 and Sennrich 2015, using Morfessor for subword splitting, with back-translated monolingual augmentation. Ensemble of 3 checkpoints from one run plus 1 Y-LSTM (see entry).
+NMT3 NY http://matrix.statmt.org/systems/show/2685 BPE to Character neural machine translation system http://arxiv.org/abs/1603.06147
+
+(SMT1 Edi syntax) http://matrix.statmt.org/systems/show/2633 string-to-tree syntax-based SMT system, mostly corresponding to system described in http://www.aclweb.org/anthology/D/D15/D15-1248.pdf , with added News 2015 LM.
+SMT2 KIT/LIMSI http://matrix.statmt.org/systems/show/2789 Phrase-based MT system with NMT and SOUL in rescoring
+SMT3 Edi http://matrix.statmt.org/systems/show/2688 Phrase-based Moses
+SMT4 JHU http://matrix.statmt.org/systems/show/2652 Phrase-based model, word clusters for all model components (LM, OSM, LR, sparse features), neural network joint model, large cc LM
+(SMT5 JHU syntax) http://matrix.statmt.org/systems/show/2804
+-------------------
+
+-------------------
+ENFI
+NMT1 ABU http://matrix.statmt.org/systems/show/2742 Neural MT system built from parallel data + backtranslated news, rule-based morphological segmentation on target side, post-processing to keep named entities. Ensemble of 4 models
+NMT2 NY http://matrix.statmt.org/systems/show/2684 BPE to Character neural machine translation system http://arxiv.org/abs/1603.06147
+
+SMT1 ABU http://matrix.statmt.org/systems/show/2741 Phrase-based SMT (OSM, biNLM, 3 reordering models), rule-based morphological segmentation on target side joined with BPE. Reranked with left-to-right and right-to-left RNN LMs
+SMT2 JHU http://matrix.statmt.org/systems/show/2654 Phrase-based model, word clusters for all model components (LM, OSM, LR, sparse features), large cc LM -- no neural network joint model, no handling of morphology
+SMT3 Hel http://matrix.statmt.org/systems/show/2721 Factored PBSMT
+SMT4 JHU syntax http://matrix.statmt.org/systems/show/2710 Hiero model, Brown-cluster LM (k=1000), large CC LM
+-------------------
+
+-------------------
+ENRO
+NMT1 EDI http://matrix.statmt.org/systems/show/2668 BPE neural MT system with monolingual training data (back-translated). ensemble of 4.
+NMT2 RWTH http://matrix.statmt.org/systems/show/2771 Ensemble
+
+SMT1 EDI http://matrix.statmt.org/systems/show/2704 Moses with OSM, unpruned CC LM, separate news2015 LM, NPLM, Bilingual LM on source.
+SMT2 RWTH http://matrix.statmt.org/systems/show/2778 Phrase based system with neural networks in rescoring
+SMT3 EDI Syntax http://matrix.statmt.org/systems/show/2751, http://matrix.statmt.org/matrix/output/1843?run_id=4432 Hierarchical Moses   TODO FAILS TO DOWNLOAD!!!
+SMT4 KIT http://matrix.statmt.org/systems/show/2746 Phrase-based MT with Rescoring using NN Models
+SMT5 EDI Syntax http://matrix.statmt.org/matrix/output/1843?run_id=4431 (TODO remove if SMT3 works)
+-------------------
+
+-------------------
+ENRU
+NMT1 EDI http://matrix.statmt.org/systems/show/2671 BPE neural MT system with monolingual training data (back-translated). ensemble of 4.
+NMT2 NY http://matrix.statmt.org/systems/show/2683 BPE to Character neural machine translation system http://arxiv.org/abs/1603.06147 
+
+SMT1 JHU http://matrix.statmt.org/systems/show/2658 Phrase-based model, word clusters for all model components (LM, OSM, LR, sparse features), neural network joint model, large cc LM
+SMT2 LIMSI http://matrix.statmt.org/systems/show/2692 An open source statistical machine translation system based on bilingual n-grams. The n-best list is rescored with bilingual neural-net ngram models using SOUL.
+SMT3 AFRL http://matrix.statmt.org/systems/show/2792 en-ru phrase-based w/ BigLM w/ ssel CC data + Stat. Post-translit
+-------------------
+
+-------------------
+ENTR, no competitive NMT
+-------------------
+
+-------------------
+CSEN, only 1 NMT
+NMT1 http://matrix.statmt.org/systems/show/2703 NMT with bpe preprocessing and backtranslated news. Ensemble of 8, taken from 2 different fine-tuning runs
+SMT1 http://matrix.statmt.org/systems/show/2655 Phrase-based model, word clusters for all model components (LM, OSM, LR, sparse features), large cc LM -- no neural network joint model 
+-------------------
+
+-------------------
+DEEN, only 1 NMT
+NMT1 http://matrix.statmt.org/systems/show/2677 BPE neural MT system with monolingual training data (back-translated). ensemble of 4, reranked with right-to-left model
+SMT1 http://matrix.statmt.org/systems/show/2687 Phrase-based Moses
+-------------------
+
+-------------------
+FIEN, no NMT
+-------------------
+
+-------------------
+ROEN, 1 NMT
+NMT1 http://matrix.statmt.org/systems/show/2667 BPE neural MT system with monolingual training data (back-translated). ensemble of 4. 
+SMT1 http://matrix.statmt.org/systems/show/2705 Moses with OSM, CC Mono LM, NPLM on news2015 only. 
+-------------------
+
+-------------------
+RUEN, 1 NMT
+NMT1  http://matrix.statmt.org/systems/show/2673 BPE neural MT system with monolingual training data (back-translated). ensemble of 4 
+SMT1 http://matrix.statmt.org/systems/show/2764 PB-SMT system with Russian lemma to English word alignment, coarse LM, sparse features, hierarchical DM, NNJM, NNLTM and OOV transliteration 
+SMT1b http://matrix.statmt.org/systems/show/2766 Phrase-based Moses with UEDIN NMT feature-functions (3 models), BPE segmentation for both, PBMT and NMT, OSM, Log-Linear LM interpolation. (similar scores but has NMT functions!)
+-------------------
+
+-------------------
+TREN, no NMT
+-------------------
+
