@@ -40,6 +40,29 @@ function overlap_metric {
 }
 
 
+#Fluency (Section 4)
+function fluency {
+
+THEANOLM="$HOME/.local/bin/theanolm"
+
+for MYLANG in "en" "cs" "de" "fi" "ro" "ru" ; do
+	if [ ! -f "./fluency/model.subset.wordclasses.$MYLANG.h5" ]; then
+		wget http://abumatran.eu/lms-eacl-2017/model.subset.wordclasses.$MYLANG.h5 -O "./fluency/model.subset.wordclasses.$MYLANG.h5"
+	fi
+
+	for FILE in systems/??$MYLANG-?mt1.tok.true ; do
+					echo "$FILE" >> fluency/results
+					THEANO_FLAGS=device=cpu,floatX=float32,on_unused_input=ignore $THEANOLM score "./fluency/model.subset.wordclasses.$MYLANG.h5" $FILE --output perplexity >> fluency/results
+	done
+
+
+
+done
+
+}
+
+
+#Reordering (Section 5)
 function sort_alignments {
 python -c '
 import sys
@@ -211,11 +234,6 @@ function hjerson {
 }
 
 
-
-
-
-if [ "test" == "" ]; then
-
 # ----------- overlaps (Section 3) (Results based on CHRF are shown in the paper)
 mkdir -p overlaps/
 rm -f overlaps/overlaps.out
@@ -232,14 +250,18 @@ for TL in "cs" "de" "fi" "ro" "ru"; do
 	overlap_metric $SL$TL CHRF >> overlaps/overlaps.out
 done
 
-fi
-
 #---------- fluency (Section 4)
-
+rm -f fluency/results
+echo "Computing fluency information ..."
+#install theanoLM
+pip3 install --user TheanoLM==0.9.5
+mkdir -p fluency
+fluency
+echo "... result is available at fluency/results"
 
 
 #--------- reordering (Section 5)
-
+echo "Computing reordering information ..."
 pushd code/permutations
 bash compile.sh
 popd
@@ -249,11 +271,10 @@ for PAIR in "cs-en" "de-en" "en-cs" "en-de" "en-fi" "en-ro" "en-ru" "ro-en" "ru-
         TL=`echo "$PAIR" | cut -f 2 -d '-'`
 
 	compute_reordering "$SL" "$TL"
-
+echo "... result is available at reordering/results"
 
 done
 
-if [ "test" == "" ]; then
 
 # ----------- scores by sentence length (Section 6)
 mkdir -p scores_by_length/
@@ -263,5 +284,3 @@ scores_by_length > scores_by_length/scores_by_length.out
 # ----------- hjerson (Section 7)
 mkdir -p hjerson
 hjerson
-
-fi
